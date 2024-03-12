@@ -13,11 +13,18 @@
 <body>
     <div id="Prova1">
         <div class="calculadora">
+            <!-- Chama o display, define o tipo e ativa a função de executar o calculo pressionando a tela ENTER-->
             <input type="text" v-model="display" @keyup.enter="calcular">
             <div class="botoes">
+                <!-- For in de numero em numeros para mostrar apenas os numeros informados no script na tela da calculadora.
+                No evento CLICK ele assionara a função de mostrar na tela o numero escolhido pelo usuario-->
                 <button v-for="num in numeros" :key="num" @click="calculadoraTela(num)"> {{ num }} </button>
+                <!-- For in de operador em operador para mostrar apenas os operadores informados no script na tela da calculadora.
+                No evento CLICK ele assionara a função de oparação, mostrando na tela o operador escolhido pelo usuario-->
                 <button v-for="operador in operadores" :key="operador" @click="operacao(operador)"> {{ operador }} </button>
+                <!-- Chama a função calcular que iniciara a cadeia de eventos no script para chegar ao resultado-->
                 <button @click="calcular()"> = </button>
+                <!-- Limpa a tela e os dados na calculadora-->
                 <button @click="limpar()"> C </button>
             </div>
         </div>

@@ -21,7 +21,8 @@ const prova1 = Vue.createApp({
             }
         },
 
-        //Chama a função para executar as operações e mostra na tela da calculadora, criada com try/catch para tratatamento de erro
+        //Chama a função para executar as operações e mostrar na tela da calculadora, criada com try/catch para tratatamento de erro
+        //Caso o resultado obtido da função executarOpracoes nao satisfazer os criterios, ele mostrara a mensagem Erro no display da calculadora
         calcular() {
             try {
                 const resultado = this.executarOperacoes(this.display);
@@ -33,29 +34,31 @@ const prova1 = Vue.createApp({
 
         //Após chamada pela função calcular inicia a logica das operações de acordo com o operador matematico recebido pelo evento
         //Foi adicionada REGEX para um codigo mais correto, usando do metodo TEST para certificar que sera retornado o padrão pedido
+        //OBS Fui auxiliado para a criação das expressões regulares
         executarOperacoes(expressao) {
             const operacoes = expressao.match(/(\d+|\+|\-|\*|\/)/g);
             let resultado = 0;
             let operador = '+';
 
-            for (const op of operacoes) {
-                if (/^\d+$/.test(op)) {
+            //Nesse for in sera checado se o ultimo digito é um numero, caso não for, ele checara qual operador foi informado e executara a operação
+            for (const num of operacoes) {
+                if (/^\d+$/.test(num)) {
                     switch (operador) {
                         case '+':
-                            resultado += parseFloat(op);
+                            resultado += parseFloat(num);
                             break;
                         case '-':
-                            resultado -= parseFloat(op);
+                            resultado -= parseFloat(num);
                             break;
                         case '*':
-                            resultado *= parseFloat(op);
+                            resultado *= parseFloat(num);
                             break;
                         case '/':
-                            resultado /= parseFloat(op);
+                            resultado /= parseFloat(num);
                             break;
                     }
                 } else {
-                    operador = op;
+                    operador = num;
                 }
             }
 
