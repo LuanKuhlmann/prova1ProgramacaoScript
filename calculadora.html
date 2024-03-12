@@ -13,8 +13,8 @@
 <body>
     <div id="Prova1">
         <div class="calculadora">
-            <!-- Chama o display, define o tipo e ativa a função de executar o calculo pressionando a tela ENTER-->
-            <input type="text" v-model="display" @keyup.enter="calcular">
+            <!-- Chama o display e define o tipo que sera exibido-->
+            <input type="text" v-model="display" disabled>
             <div class="botoes">
                 <!-- For in de numero em numeros para mostrar apenas os numeros informados no script na tela da calculadora.
                 No evento CLICK ele assionara a função de mostrar na tela o numero escolhido pelo usuario-->
